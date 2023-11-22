@@ -29,7 +29,7 @@
                                                     data-bs-toggle="modal" data-bs-target="#modalAgregarContacto"
                                                     style="background-color: #003a2f; border-color: #112a2a;"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Agregar Contacto">Registrar +</button>
+                                                    title="Agregar Contacto">Registrar</button>
                                             </div>
 
 
