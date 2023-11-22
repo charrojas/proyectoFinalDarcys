@@ -4,6 +4,7 @@ use App\Http\Controllers\ControllerCarrito;
 use App\Http\Controllers\controllerClientes;
 use App\Http\Controllers\ControllerCocteles;
 use App\Http\Controllers\ControllerIngredientesCocteles;
+use App\Http\Controllers\ControllerLogin;
 use App\Http\Controllers\ControllerTienda;
 use App\Http\Controllers\IngredientesController;
 use App\Http\Controllers\PaymentController;
@@ -36,8 +37,12 @@ Route::get('paypal/cancel',[PaymentController::class, 'cancel'] )->name('paypal_
 
 
 Route::post('/plan',[controllerClientes::class,'showPlan'])->name('plan');
+    
+Route::get('/login', [ControllerLogin::class, 'showLoginForm'])->name('login');
+Route::post('/login', [ControllerLogin::class, 'login']);
 
  Route::resource('clientes',controllerClientes::class);
+
  Route::resource('/cocteles',ControllerCocteles::class);
  Route::resource('/coctelesIngredientes',ControllerIngredientesCocteles::class);
  Route::resource('/ingredientes',IngredientesController::class);

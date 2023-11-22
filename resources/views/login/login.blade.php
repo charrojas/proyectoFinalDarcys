@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('../css/styleLogin.css') }}">
 
-
 </head>
 
 <style>
@@ -22,15 +21,9 @@
 </style>
 
 <body class="hold-transition login-page">
-    <?php
-            
-        if(isset($_GET['msg'])){
-        
-        }
 
-    ?>
     <div class="wrapper">
-        <form class="login" method="post" action="{{ url('/login') }}">
+        <form class="login" method="post" action="{{ url('login') }}">
             @csrf
             <div>
 
@@ -38,17 +31,16 @@
                     Darcy's</h1>
 
 
-                <input id="correo" type="text" class="form-control @error('email') is-invalid @enderror"
-                    name="usuario" value="{{ old('email') }}" required autocomplete="email" autofocus
-                    placeholder="Correo" />
+                <input id="usuario" type="text" class="form-control @error('usuario') is-invalid @enderror"
+                    name="usuario" required autocomplete="usuario" autofocus placeholder="Usuario" />
                 <i class="fa fa-user" style="margin-top: -38px;"></i>
-                @error('email')
+                @error('usuario')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
 
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror"
                     name="password" required autocomplete="current-password" placeholder="Contraseña">
                 <i class="fa fa-key" style="margin-top: -38px;"></i>
                 @error('password')
@@ -64,14 +56,26 @@
                     </button>
                 </div>
             </div>
-
-
         </form>
     </div>
 </body>
 
+<script>
+    function validateForm() {
+        var usuario = document.getElementById("usuario").value;
+        var password = document.getElementById("password").value;
 
-<script src="{{ asset('../js/script.js') }}"></script>
+        if (usuario === "" || password === "") {
+            alert("Por favor, complete todos los campos.");
+            return false;
+        }
+
+        // Aquí podrías agregar otras validaciones adicionales si es necesario
+
+        return true; // Permite que el formulario se envíe si pasa la validación
+    }
+</script>
+{{-- <script src="{{ asset('../js/script.js') }}"></script> --}}
 
 
 </html>
