@@ -30,7 +30,6 @@
                 <h1 class="title" style="font-family: 'Playfair Display', serif; font-size: 48px; color: #CC412F;">
                     Darcy's</h1>
 
-
                 <input id="usuario" type="text" class="form-control @error('usuario') is-invalid @enderror"
                     name="usuario" required autocomplete="usuario" autofocus placeholder="Usuario" />
                 <i class="fa fa-user" style="margin-top: -38px;"></i>
@@ -40,7 +39,7 @@
                     </span>
                 @enderror
 
-                <input id="password" type="text" class="form-control @error('password') is-invalid @enderror"
+                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                     name="password" required autocomplete="current-password" placeholder="Contraseña">
                 <i class="fa fa-key" style="margin-top: -38px;"></i>
                 @error('password')
@@ -60,21 +59,6 @@
     </div>
 </body>
 
-<script>
-    function validateForm() {
-        var usuario = document.getElementById("usuario").value;
-        var password = document.getElementById("password").value;
-
-        if (usuario === "" || password === "") {
-            alert("Por favor, complete todos los campos.");
-            return false;
-        }
-
-        // Aquí podrías agregar otras validaciones adicionales si es necesario
-
-        return true; // Permite que el formulario se envíe si pasa la validación
-    }
-</script>
 {{-- <script src="{{ asset('../js/script.js') }}"></script> --}}
 
 

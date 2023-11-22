@@ -63,6 +63,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            'username' => 'usuario', // Aquí se especifica el campo 'usuario' como el nombre de usuario
         ],
 
         // 'users' => [

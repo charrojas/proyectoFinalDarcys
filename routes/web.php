@@ -21,30 +21,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ControllerTienda::class, 'index'])->name('inicio');
-Route::get('/ver_planes',[ControllerTienda::class, 'ver_planes'])->name('planes');
-Route::get('/nosotros',[ControllerTienda::class, 'nosotros'])->name('nosotros');
-Route::get('/categoria{id}',[ControllerTienda::class, 'mostrarCategoria'])->name('categoria');
-// Route::get('/login',[ControllerTienda::class, 'login'])->name('login');
+Route::get('/', [ControllerTienda::class, 'index'])->name('inicio');
+Route::get('/ver_planes', [ControllerTienda::class, 'ver_planes'])->name('planes');
+Route::get('/nosotros', [ControllerTienda::class, 'nosotros'])->name('nosotros');
+Route::get('/categoria{id}', [ControllerTienda::class, 'mostrarCategoria'])->name('categoria');
+
+Route::get('/carrito', [ControllerCarrito::class, 'index'])->name('car');
+Route::resource('carri', ControllerCarrito::class);
+
+Route::post('paypal/paypal', [PaymentController::class, 'payment'])->name('paypal');
+Route::get('paypal/success', [PaymentController::class, 'success'])->name('paypal_success');
+Route::get('paypal/cancel', [PaymentController::class, 'cancel'])->name('paypal_cancel');
 
 
-Route::get('/carrito',[ControllerCarrito::class,'index'])->name('car');
-Route::resource('carri',ControllerCarrito::class);
+Route::post('/plan', [controllerClientes::class, 'showPlan'])->name('plan');
 
-Route::post('paypal/paypal',[PaymentController::class, 'payment'] )->name('paypal');
-Route::get('paypal/success',[PaymentController::class, 'success'] )->name('paypal_success');
-Route::get('paypal/cancel',[PaymentController::class, 'cancel'] )->name('paypal_cancel');
-
-
-Route::post('/plan',[controllerClientes::class,'showPlan'])->name('plan');
-    
 Route::get('/login', [ControllerLogin::class, 'showLoginForm'])->name('login');
 Route::post('/login', [ControllerLogin::class, 'login']);
+Route::get('/logout', [ControllerLogin::class, 'logout'])->name('logout');
 
- Route::resource('clientes',controllerClientes::class);
-
- Route::resource('/cocteles',ControllerCocteles::class);
- Route::resource('/coctelesIngredientes',ControllerIngredientesCocteles::class);
- Route::resource('/ingredientes',IngredientesController::class);
-    
-  
+// Rutas que requieren inicio de sesión
+Route::middleware('auth')->resource('clientes', controllerClientes::class);
+Route::middleware('auth')->resource('cocteles', ControllerCocteles::class);
+Route::middleware('auth')->resource('coctelesIngredientes', ControllerIngredientesCocteles::class);
+Route::middleware('auth')->resource('ingredientes', IngredientesController::class);

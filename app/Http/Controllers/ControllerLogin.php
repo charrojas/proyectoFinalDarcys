@@ -17,23 +17,26 @@ class ControllerLogin extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'usuario' => 'required',
-            'password' => 'required',
-        ]);
-    
-        if (Auth::attempt($credentials)) {
-            // El usuario ha sido autenticado correctamente
-            return redirect()->intended('clientes.index');
+        $credentials = $request->only('usuario', 'password');
+
+        $user = User::where('usuario', $credentials['usuario'])->first();
+
+        // Verificar si se encontró al usuario y si la contraseña coincide
+        if ($user && $credentials['password'] === $user->password) {
+            Auth::login($user);
+            return redirect()->intended('clientes');
         }
-    
-        // Las credenciales no son válidas
+
         return back()->withErrors([
             'usuario' => 'Las credenciales proporcionadas no son válidas.',
         ]);
     }
 
-    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
 
     /**
      * Show the form for creating a new resource.
