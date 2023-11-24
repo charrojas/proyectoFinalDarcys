@@ -29,6 +29,7 @@
                             <!--HEAD PRICE DETAIL START-->
                             <div class="generic_head_price clearfix">
 
+                                
                                 <!--HEAD CONTENT START-->
                                 <div class="generic_head_content clearfix">
 
