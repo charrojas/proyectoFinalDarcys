@@ -24,18 +24,18 @@
                                         <div class="d-flex align-items-center">
                                             <div class="me-2">
                                                 <button type="button" class="btn btn-info text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#modalAgregarIngrediente"
+                                                    data-bs-toggle="modal" data-bs-target="#modalAgregarContacto"
                                                     style="background-color: #003a2f; border-color: #112a2a;"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="Agregar ingrediente">Registrar</button>
+                                                    title="Agregar Contacto">Registrar</button>
                                             </div>
 
-                                            <div class="modal fade" id="modalAgregarIngrediente" tabindex="-1"
-                                                aria-labelledby="modalAgregarIngredienteLabel" aria-hidden="true">
+                                            <div class="modal fade" id="modalAgregarContacto" tabindex="-1"
+                                                aria-labelledby="modalAgregarContactoLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="modalAgregarIngredienteLabel">
+                                                            <h5 class="modal-title" id="modalAgregarContactoLabel">
                                                                 Agregar nuevo contacto</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -139,7 +139,7 @@
                                     <hr />
 
                                     <div class="table-responsive">
-                                        <table id="tablaIngredientes" class="table table-bordered">
+                                        <table id="tablaContactos" class="table table-bordered">
                                             <thead class="theadInventario">
                                                 <tr class="text-center">
 
@@ -175,9 +175,9 @@
                                                             <!-- Botón de editar con modal -->
                                                             <button class="btn btn-warning btn-sm btn-block"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#editarIngredienteModal{{$item->id_cliente}}"
+                                                                data-bs-target="#editarContactoModal{{$item->id_cliente}}"
                                                                 data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Editar ingrediente">
+                                                                title="Editar Contacto">
                                                                 <div class="text-center">
                                                                     <i class="lni lni-pencil-alt"
                                                                         style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
@@ -187,22 +187,22 @@
                                                             <!-- Botón de eliminar -->
                                                             <button class="btn btn-danger btn-sm btn-block"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#eliminarIngredienteModal{{$item->id_cliente}}">
+                                                                data-bs-target="#eliminarContactoModal{{$item->id_cliente}}">
                                                                 <i class="lni lni-trash"
                                                                     style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
                                                             </button>
                                                         </div>
 
                                                         <!-- Modal de edición -->
-                                                        <div class="modal fade" id="editarIngredienteModal{{$item->id_cliente}}"
-                                                            tabindex="-1" aria-labelledby="editarIngredienteModalLabel"
+                                                        <div class="modal fade" id="editarContactoModal{{$item->id_cliente}}"
+                                                            tabindex="-1" aria-labelledby="editarContactoModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-scrollable">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
-                                                                            id="editarIngredienteModalLabel">
-                                                                            Editar ingrediente</h5>
+                                                                            id="editarContactoModalLabel">
+                                                                            Editar Contacto</h5>
                                                                         <button type="button" class="btn-close"
                                                                             data-bs-dismiss="modal" aria-label="Close"
                                                                             data-bs-toggle="tooltip"
@@ -315,14 +315,14 @@
                                                         </div>
 
                                                         {{-- Modal de eliminar --}}
-                                                        <div class="modal fade" id="eliminarIngredienteModal{{$item->id_cliente}}"
-                                                            tabindex="-1" aria-labelledby="eliminarIngredienteModalLabel"
+                                                        <div class="modal fade" id="eliminarContactoModal{{$item->id_cliente}}"
+                                                            tabindex="-1" aria-labelledby="eliminarContactoModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"
-                                                                            id="eliminarIngredienteModalLabel">
+                                                                            id="eliminarContactoModalLabel">
                                                                             Confirmar
                                                                             eliminación</h5>
                                                                         <button type="button" class="btn-close"
@@ -331,7 +331,7 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         ¿Estás seguro de que deseas eliminar este
-                                                                        ingrediente?
+                                                                        contacto?
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary"
