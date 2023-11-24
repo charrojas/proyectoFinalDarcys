@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2023 a las 19:08:27
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 24-11-2023 a las 15:19:26
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,25 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_darcys`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `admins`
---
-
-CREATE TABLE `admins` (
-  `id_admin` int(11) NOT NULL,
-  `usuario` varchar(50) DEFAULT NULL,
-  `pasword` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `admins`
---
-
-INSERT INTO `admins` (`id_admin`, `usuario`, `pasword`) VALUES
-(1, 'admin', '123');
 
 -- --------------------------------------------------------
 
@@ -84,7 +65,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellidos`, `direccion`, `recibir_publicidad`, `telefono`, `correo`, `fecha_evento`, `tipo_plan`) VALUES
-(6, 'Douglas', 'Ramon jimenez', '70301', 1, '61994020', 'douglasjimenez2028@gmail.com', NULL, 'planClasico');
+(6, 'Douglas', 'Ramon jimenez', '70301', 1, '61994020', 'douglasjimenez2028@gmail.com', NULL, 'planClasico'),
+(8, 'Ashly Charlotte', 'Ashly Rojas', '27 millas, de finca Barboza primer entrada a M/D 400 MTS al fondo, casa prefabricada color verde a M/D contiguo a un corral', 1, '60020469', 'charrojas2000@gmail.com', '2023-11-24', 'Plan preferencial'),
+(9, NULL, NULL, NULL, 0, NULL, NULL, NULL, 'Plan clasico');
 
 -- --------------------------------------------------------
 
@@ -192,15 +175,29 @@ INSERT INTO `ingredientes_cocteles` (`id_ingredientes_cocteles`, `id_ingrediente
 (4, 6, 13, 2),
 (5, 2, 13, 2);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id_admin` int(11) NOT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_admin`, `usuario`, `password`) VALUES
+(1, 'admin', '123'),
+(2, 'charrojas@gmail.com', '1234');
+
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `admins`
---
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indices de la tabla `categorias`
@@ -236,14 +233,14 @@ ALTER TABLE `ingredientes_cocteles`
   ADD KEY `id_coctel` (`id_coctel`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- Indices de la tabla `users`
 --
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_admin`);
 
 --
--- AUTO_INCREMENT de la tabla `admins`
+-- AUTO_INCREMENT de las tablas volcadas
 --
-ALTER TABLE `admins`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -255,7 +252,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cocteles`
@@ -274,6 +271,12 @@ ALTER TABLE `ingredientes`
 --
 ALTER TABLE `ingredientes_cocteles`
   MODIFY `id_ingredientes_cocteles` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
