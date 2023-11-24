@@ -1,7 +1,9 @@
 @extends('plantilla')
 
 @section('gestion_nombre', 'Agregar nuevo cóctel')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 @section('contenido')
     <section class="content">
@@ -45,8 +47,9 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{route('cocteles.store')}}" method="POST" enctype="multipart/form-data" >
-                                                              @csrf  
+                                                            <form action="{{ route('cocteles.store') }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="nombreLabel"
                                                                         class="col-sm-4 col-form-label">Nombre:</label>
@@ -69,11 +72,14 @@
                                                                         class="col-sm-4 col-form-label">Tipo de
                                                                         Categoria:</label>
                                                                     <div class="col-sm-8">
-                                                                        <select required name="id_categoria" class="form-select" id="tipoPlan"
+                                                                        <select required name="id_categoria"
+                                                                            class="form-select" id="tipoPlan"
                                                                             aria-label="Seleccione el tipo de plan">
-                                                                            <option selected disabled>Seleccionar una categoria</option>
+                                                                            <option selected disabled>Seleccionar una
+                                                                                categoria</option>
                                                                             @foreach ($categoria as $item)
-                                                                                <option value="{{$item->id_categoria}}">{{$item->nombre}}</option>
+                                                                                <option value="{{ $item->id_categoria }}">
+                                                                                    {{ $item->nombre }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -83,50 +89,54 @@
                                                                         class="col-sm-4 col-form-label">Descripción:</label>
                                                                     <div class="col-sm-8">
                                                                         <input type="textarea" class="form-control"
-                                                                        name="descripcion" placeholder="descripcion">
+                                                                            name="descripcion" placeholder="descripcion">
                                                                     </div>
                                                                 </div>
-                                                                
+
                                                                 <div class="mt-2">
 
                                                                     <div class="">
-                                                                        <label for="nuevoInput" class="form-label">Insertar imagen:</label>
-                                                                        <input type="file" class="form-control input-imagen colorImput form-control2" id="nuevoInput"
-                                                                            name="img">
+                                                                        <label for="nuevoInput" class="form-label">Insertar
+                                                                            imagen:</label>
+                                                                        <input type="file"
+                                                                            class="form-control input-imagen colorImput form-control2"
+                                                                            id="nuevoInput" name="img">
                                                                         <div class="text-center mt-3">
-                                                
-                                                                            <img src="#" alt="Vista previa de la imagen" id="nuevoInput-preview"
+
+                                                                            <img src="#"
+                                                                                alt="Vista previa de la imagen"
+                                                                                id="nuevoInput-preview"
                                                                                 class="mt-2 rounded-4 imagen-preview"
                                                                                 style="width:200px; height: 200px; object-fit: cover; display: none;">
-                                                
-                                                                            <i id="nuevoInput-icon" class="fas fa-images" style="font-size: 50px; color: #7a7777;"></i>
-                                                                            
+
+                                                                            <i id="nuevoInput-icon" class="fas fa-images"
+                                                                                style="font-size: 50px; color: #7a7777;"></i>
+
                                                                         </div>
                                                                     </div>
-                                                
+
                                                                 </div>
-                                                                
 
 
 
 
 
 
-                                                            
+
+
                                                         </div>
 
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-bs-dismiss="modal">Cerrar</button>
                                                             <button type="submit" class="btn btn-info text-white"
-                                                            class="btn btn-info text-white"
-                                                            style="background-color: #FFC77D; border-color: #FFC77D;">
-                                                            <i class="bx bx-save"
-                                                                style="color: #F2F2F2;"></i>
+                                                                class="btn btn-info text-white"
+                                                                style="background-color: #FFC77D; border-color: #FFC77D;">
+                                                                <i class="bx bx-save" style="color: #F2F2F2;"></i>
                                                                 Guardar
                                                             </button>
                                                         </div>
-                                                    </form>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,49 +169,50 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               @foreach ($data as $item)
-                                               <tr>
-                                                    
-                                                <td>{{$item->nombre}}</td>
-                                                <td>${{$item->precio}}</td>
-                                                <td>{{$item->nombre_categoria}}</td>
-                                                @if ($item->disponibilidad==1)
-                                                <td>Disponible</td>
-                                                @else
-                                                <td>No disponible</td>
-                                                @endif
-                                                
+                                                @foreach ($data as $item)
+                                                    <tr>
 
-                                                <td>
-                                                    <div class="text-center">
+                                                        <td>{{ $item->nombre }}</td>
+                                                        <td>${{ $item->precio }}</td>
+                                                        <td>{{ $item->nombre_categoria }}</td>
+                                                        @if ($item->disponibilidad == 1)
+                                                            <td>Disponible</td>
+                                                        @else
+                                                            <td>No disponible</td>
+                                                        @endif
 
 
-                                                        {{-- Botón de visualizar --}}
-
-
-                                                        <!-- Botón de editar con modal -->
-                                                        <a href="{{route('cocteles.edit', $item->id_coctel)}}" class="btn btn-warning btn-sm btn-block">
+                                                        <td>
                                                             <div class="text-center">
-                                                                <i class="lni lni-pencil-alt"
-                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+
+
+                                                                {{-- Botón de visualizar --}}
+
+
+                                                                <!-- Botón de editar con modal -->
+                                                                <a href="{{ route('cocteles.edit', $item->id_coctel) }}"
+                                                                    class="btn btn-warning btn-sm btn-block">
+                                                                    <div class="text-center">
+                                                                        <i class="lni lni-pencil-alt"
+                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                    </div>
+                                                                </a>
+
+                                                                <!-- Botón de eliminar -->
+                                                                <button class="btn btn-danger btn-sm btn-block"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#eliminarContactoModal{{ $item->id_coctel }}">
+                                                                    <i class="lni lni-trash"
+                                                                        style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                </button>
                                                             </div>
-                                                        </a>
-
-                                                        <!-- Botón de eliminar -->
-                                                        <button class="btn btn-danger btn-sm btn-block"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#eliminarContactoModal{{$item->id_coctel}}">
-                                                            <i class="lni lni-trash"
-                                                                style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                        </button>
-                                                    </div>
 
 
-                                                    <!-- Modal de visualizacion -->
-                                                    
+                                                            <!-- Modal de visualizacion -->
 
-                                                    <!-- Modal de edición -->
-                                                    {{-- <div class="modal fade" id="editarContactoModal" tabindex="-1"
+
+                                                            <!-- Modal de edición -->
+                                                            {{-- <div class="modal fade" id="editarContactoModal" tabindex="-1"
                                                         aria-labelledby="editarContactoModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -301,45 +312,47 @@
                                                             </div>
                                                         </div>
                                                     </div> --}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            {{-- Modal de eliminar --}}
-                            <div class="modal fade" id="eliminarContactoModal{{$item->id_coctel}}" tabindex="-1"
-                                aria-labelledby="eliminarContactoModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="eliminarContactoModalLabel{{$item->id_coctel}}">
-                                                Confirmar
-                                                eliminación</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            ¿Estás seguro de que deseas eliminar este
-                                            Cóctel?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Cancelar</button>
+                                {{-- Modal de eliminar --}}
+                                <div class="modal fade" id="eliminarContactoModal{{ $item->id_coctel }}" tabindex="-1"
+                                    aria-labelledby="eliminarContactoModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title"
+                                                    id="eliminarContactoModalLabel{{ $item->id_coctel }}">
+                                                    Confirmar
+                                                    eliminación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estás seguro de que deseas eliminar este
+                                                Cóctel?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancelar</button>
 
-                                                <form action="{{route('cocteles.destroy',$item->id_coctel)}}" method="POST">
+                                                <form action="{{ route('cocteles.destroy', $item->id_coctel) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger">
                                                         Eliminar
                                                     </button>
                                                 </form>
-                                           
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            </td>
-                            </tr>
-                                               @endforeach 
-                                            </tbody>
+                                </td>
+                                </tr>
+                                @endforeach
+                                </tbody>
                                 </table>
                             </div>
                         </div>
@@ -369,13 +382,13 @@
                 reader.onload = function(e) {
                     $("#" + previewId).attr('src', e.target.result);
                     $("#" + previewId).show();
-                    $("#" + iconId).hide(); 
+                    $("#" + iconId).hide();
                 };
 
                 reader.readAsDataURL(input.files[0]);
             } else {
                 $("#" + previewId).hide();
-                $("#" + iconId).show(); 
+                $("#" + iconId).show();
             }
         }
     </script>

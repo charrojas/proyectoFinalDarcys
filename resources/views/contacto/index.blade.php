@@ -41,7 +41,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{route('clientes.store')}}" method="post">
+                                                            <form action="{{ route('clientes.store') }}" method="post">
                                                                 @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="nombreLabel"
@@ -89,7 +89,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                
+
 
                                                                 <div class="row mb-3">
                                                                     <label for="tipoPlanLabel"
@@ -104,20 +104,25 @@
                                                                             </option>
                                                                             <option value="planInfantil">Plan Infantil
                                                                             </option>
-                                                                            <option value="planPreferencial">Plan Preferencial</option>
-                                                                            <option value="planPresidencial">Plan Presidencial</option>
+                                                                            <option value="planPreferencial">Plan
+                                                                                Preferencial</option>
+                                                                            <option value="planPresidencial">Plan
+                                                                                Presidencial</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="row mb-3">
-                                                                    
-                                                                        <div class="col-lg-8">
-                                                                            <div class="form-check">
-                                                                                <input class="form-check-input" name="recibir_publicidad" type="checkbox">
-                                                                                <label class="form-check-label" for="recibir_publicidad">Proporciona permiso para utilizar sus datos?</label>
-                                                                            </div>
+
+                                                                    <div class="col-lg-8">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input"
+                                                                                name="recibir_publicidad" type="checkbox">
+                                                                            <label class="form-check-label"
+                                                                                for="recibir_publicidad">Proporciona
+                                                                                permiso para utilizar sus datos?</label>
                                                                         </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
@@ -163,201 +168,230 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($clientes as $item)
-                                                <tr>
-                                                    <td>{{$item->nombre}}</td>
-                                                    <td>{{$item->apellidos}}</td>
-                                                    <td>{{$item->correo}}</td>
-                                                    <td>{{$item->telefono}}</td>
-                                                    <td>
-                                                        <div class="text-center">
+                                                    <tr>
+                                                        <td>{{ $item->nombre }}</td>
+                                                        <td>{{ $item->apellidos }}</td>
+                                                        <td>{{ $item->correo }}</td>
+                                                        <td>{{ $item->telefono }}</td>
+                                                        <td>
+                                                            <div class="text-center">
 
 
-                                                            <!-- Botón de editar con modal -->
-                                                            <button class="btn btn-warning btn-sm btn-block"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#editarContactoModal{{$item->id_cliente}}"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Editar Contacto">
-                                                                <div class="text-center">
-                                                                    <i class="lni lni-pencil-alt"
+                                                                <!-- Botón de editar con modal -->
+                                                                <button class="btn btn-warning btn-sm btn-block"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#editarContactoModal{{ $item->id_cliente }}"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                    title="Editar Contacto">
+                                                                    <div class="text-center">
+                                                                        <i class="lni lni-pencil-alt"
+                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                    </div>
+                                                                </button>
+
+                                                                <!-- Botón de eliminar -->
+                                                                <button class="btn btn-danger btn-sm btn-block"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#eliminarContactoModal{{ $item->id_cliente }}">
+                                                                    <i class="lni lni-trash"
                                                                         style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                </div>
-                                                            </button>
+                                                                </button>
+                                                            </div>
 
-                                                            <!-- Botón de eliminar -->
-                                                            <button class="btn btn-danger btn-sm btn-block"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#eliminarContactoModal{{$item->id_cliente}}">
-                                                                <i class="lni lni-trash"
-                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                            </button>
-                                                        </div>
+                                                            <!-- Modal de edición -->
+                                                            <div class="modal fade"
+                                                                id="editarContactoModal{{ $item->id_cliente }}"
+                                                                tabindex="-1" aria-labelledby="editarContactoModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-scrollable">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="editarContactoModalLabel">
+                                                                                Editar Contacto</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Cerrar"></button>
+                                                                        </div>
 
-                                                        <!-- Modal de edición -->
-                                                        <div class="modal fade" id="editarContactoModal{{$item->id_cliente}}"
-                                                            tabindex="-1" aria-labelledby="editarContactoModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="editarContactoModalLabel">
-                                                                            Editar Contacto</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Cerrar"></button>
-                                                                    </div>
-
-                                                                    <div class="modal-body">
-                                                                        <form action="{{route('clientes.update',$item->id_cliente)}}" method="post">
-                                                                            @csrf
-                                                                            @method('put')
-                                                                            <div class="row mb-3">
-                                                                                <label for="nombreLabel"
-                                                                                    class="col-sm-4 col-form-label">Nombre:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        name="nombre" placeholder="Nombre" value="{{$item->nombre}}">
-                                                                                </div>
-                                                                            </div>
-            
-                                                                            <div class="row mb-3">
-                                                                                <label for="apellidosLabel"
-                                                                                    class="col-sm-4 col-form-label">Apellidos:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        name="apellidos" placeholder="Apellidos" value="{{$item->apellidos}}">
-                                                                                </div>
-                                                                            </div>
-            
-                                                                            <div class="row mb-3">
-                                                                                <label for="direccionLabel"
-                                                                                    class="col-sm-4 col-form-label">Dirección:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        name="direccion" placeholder="Dirección" value="{{$item->direccion}}">
-                                                                                </div>
-                                                                            </div>
-            
-                                                                            <div class="row mb-3">
-                                                                                <label for="telefonoLabel"
-                                                                                    class="col-sm-4 col-form-label">Télefono:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="text" class="form-control"
-                                                                                        name="telefono" placeholder="Télefono" value="{{$item->telefono}}">
-                                                                                </div>
-                                                                            </div>
-            
-                                                                            <div class="row mb-3">
-                                                                                <label for="correoLabel"
-                                                                                    class="col-sm-4 col-form-label">Correo
-                                                                                    Electrónico:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <input type="email" class="form-control"
-                                                                                        name="correo" placeholder="Correo Electrónico" value="{{$item->correo}}">
-                                                                                </div>
-                                                                            </div>
-            
-                                                                            
-            
-                                                                            <div class="row mb-3">
-                                                                                <label for="tipoPlanLabel"
-                                                                                    class="col-sm-4 col-form-label">Tipo de
-                                                                                    Plan:</label>
-                                                                                <div class="col-sm-8">
-                                                                                    <select class="form-select" name="tipoPlan"
-                                                                                        aria-label="Seleccione el tipo de plan">
-                                                                                        <option selected disabled>{{$item->tipo_plan}}</option>
-                                                                                        <option value="planClasico">Plan Clásico
-                                                                                        </option>
-                                                                                        <option value="planInfantil">Plan Infantil
-                                                                                        </option>
-                                                                                        <option value="planPreferencial">Plan Preferencial</option>
-                                                                                        <option value="planPresidencial">Plan Presidencial</option>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-            
-                                                                            <div class="row mb-3">
-                                                                                
-                                                                                <div class="col-lg-8">
-                                                                                    <div class="form-check">
-                                                                                        <input class="form-check-input" 
-                                                                                               name="recibir_publicidad" 
-                                                                                               type="checkbox" 
-                                                                                               value="on" 
-                                                                                               {{ $item->recibir_publicidad == 1 ? 'checked' : '' }}>
-                                                                                        <label class="form-check-label" for="recibir_publicidad">Proporciona permiso para utilizar sus datos?</label>
+                                                                        <div class="modal-body">
+                                                                            <form
+                                                                                action="{{ route('clientes.update', $item->id_cliente) }}"
+                                                                                method="post">
+                                                                                @csrf
+                                                                                @method('put')
+                                                                                <div class="row mb-3">
+                                                                                    <label for="nombreLabel"
+                                                                                        class="col-sm-4 col-form-label">Nombre:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="nombre"
+                                                                                            placeholder="Nombre"
+                                                                                            value="{{ $item->nombre }}">
                                                                                     </div>
                                                                                 </div>
-                                                                                
-                                                                                    </div>
-                                                                            </div>
 
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #FFC77D; border-color: #FFC77D;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
+                                                                                <div class="row mb-3">
+                                                                                    <label for="apellidosLabel"
+                                                                                        class="col-sm-4 col-form-label">Apellidos:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="apellidos"
+                                                                                            placeholder="Apellidos"
+                                                                                            value="{{ $item->apellidos }}">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="direccionLabel"
+                                                                                        class="col-sm-4 col-form-label">Dirección:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="direccion"
+                                                                                            placeholder="Dirección"
+                                                                                            value="{{ $item->direccion }}">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="telefonoLabel"
+                                                                                        class="col-sm-4 col-form-label">Télefono:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            name="telefono"
+                                                                                            placeholder="Télefono"
+                                                                                            value="{{ $item->telefono }}">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="correoLabel"
+                                                                                        class="col-sm-4 col-form-label">Correo
+                                                                                        Electrónico:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <input type="email"
+                                                                                            class="form-control"
+                                                                                            name="correo"
+                                                                                            placeholder="Correo Electrónico"
+                                                                                            value="{{ $item->correo }}">
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                                <div class="row mb-3">
+                                                                                    <label for="tipoPlanLabel"
+                                                                                        class="col-sm-4 col-form-label">Tipo
+                                                                                        de
+                                                                                        Plan:</label>
+                                                                                    <div class="col-sm-8">
+                                                                                        <select class="form-select"
+                                                                                            name="tipoPlan"
+                                                                                            aria-label="Seleccione el tipo de plan">
+                                                                                            <option selected disabled>
+                                                                                                {{ $item->tipo_plan }}
+                                                                                            </option>
+                                                                                            <option value="planClasico">
+                                                                                                Plan Clásico
+                                                                                            </option>
+                                                                                            <option value="planInfantil">
+                                                                                                Plan Infantil
+                                                                                            </option>
+                                                                                            <option
+                                                                                                value="planPreferencial">
+                                                                                                Plan Preferencial</option>
+                                                                                            <option
+                                                                                                value="planPresidencial">
+                                                                                                Plan Presidencial</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row mb-3">
+
+                                                                                    <div class="col-lg-8">
+                                                                                        <div class="form-check">
+                                                                                            <input class="form-check-input"
+                                                                                                name="recibir_publicidad"
+                                                                                                type="checkbox"
+                                                                                                value="on"
+                                                                                                {{ $item->recibir_publicidad == 1 ? 'checked' : '' }}>
+                                                                                            <label class="form-check-label"
+                                                                                                for="recibir_publicidad">Proporciona
+                                                                                                permiso para utilizar sus
+                                                                                                datos?</label>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cerrar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-info text-white"
+                                                                                style="background-color: #FFC77D; border-color: #FFC77D;">
+                                                                                <i class="bx bx-save"
+                                                                                    style="color: #F2F2F2;"></i>
+                                                                                Guardar
+                                                                            </button>
+                                                                        </div>
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
-                                                        {{-- Modal de eliminar --}}
-                                                        <div class="modal fade" id="eliminarContactoModal{{$item->id_cliente}}"
-                                                            tabindex="-1" aria-labelledby="eliminarContactoModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="eliminarContactoModalLabel">
-                                                                            Confirmar
-                                                                            eliminación</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        ¿Estás seguro de que deseas eliminar este
-                                                                        contacto?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cancelar</button>
-                                                                        <form action="{{route('clientes.destroy',$item->id_cliente)}}"  method="POST" >
-                                                                            @csrf
-                                                                            @method('delete')
-                                                                            <button type="submit" class="btn btn-danger">
-                                                                                Eliminar</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
                                     </div>
+
+                                    {{-- Modal de eliminar --}}
+                                    <div class="modal fade" id="eliminarContactoModal{{ $item->id_cliente }}"
+                                        tabindex="-1" aria-labelledby="eliminarContactoModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="eliminarContactoModalLabel">
+                                                        Confirmar
+                                                        eliminación</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Estás seguro de que deseas eliminar este
+                                                    contacto?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                    <form action="{{ route('clientes.destroy', $item->id_cliente) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger">
+                                                            Eliminar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 @endsection

@@ -41,7 +41,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{route('ingredientes.store')}}" method="post">
+                                                            <form action="{{ route('ingredientes.store') }}" method="post">
                                                                 @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="nombreLabel"
@@ -75,7 +75,8 @@
                                                                     <label for="lblProveedor"
                                                                         class="col-sm-4 col-form-label">Proveedor:</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" name="proveedor">
+                                                                        <input type="text" class="form-control"
+                                                                            name="proveedor">
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -122,139 +123,159 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($items as $item)
-                                                <tr>
-                                                    <td>{{$item->nombre}}</td>
-                                                    <td>{{$item->cantidad}}</td>
-                                                    <td>{{$item->fecha_vencimiento}}</td>
-                                                    <td>{{$item->nombre_proveedor}}</td>
-                                                    <td>
-                                                        <div class="text-center">
+                                                    <tr>
+                                                        <td>{{ $item->nombre }}</td>
+                                                        <td>{{ $item->cantidad }}</td>
+                                                        <td>{{ $item->fecha_vencimiento }}</td>
+                                                        <td>{{ $item->nombre_proveedor }}</td>
+                                                        <td>
+                                                            <div class="text-center">
 
 
-                                                            <!-- Botón de editar con modal -->
-                                                            <button class="btn btn-warning btn-sm btn-block"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#editarIngredienteModal{{$item->id_ingrediente}}"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Editar ingrediente">
-                                                                <div class="text-center">
-                                                                    <i class="lni lni-pencil-alt"
+                                                                <!-- Botón de editar con modal -->
+                                                                <button class="btn btn-warning btn-sm btn-block"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#editarIngredienteModal{{ $item->id_ingrediente }}"
+                                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                    title="Editar ingrediente">
+                                                                    <div class="text-center">
+                                                                        <i class="lni lni-pencil-alt"
+                                                                            style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
+                                                                    </div>
+                                                                </button>
+
+                                                                <!-- Botón de eliminar -->
+                                                                <button class="btn btn-danger btn-sm btn-block"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#eliminarIngredienteModal{{ $item->id_ingrediente }}">
+                                                                    <i class="lni lni-trash"
                                                                         style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                                </div>
-                                                            </button>
+                                                                </button>
+                                                            </div>
 
-                                                            <!-- Botón de eliminar -->
-                                                            <button class="btn btn-danger btn-sm btn-block"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#eliminarIngredienteModal{{$item->id_ingrediente}}">
-                                                                <i class="lni lni-trash"
-                                                                    style="color: #F2F2F2; margin: 0 auto; display: block;"></i>
-                                                            </button>
-                                                        </div>
+                                                            <!-- Modal de edición -->
+                                                            <div class="modal fade"
+                                                                id="editarIngredienteModal{{ $item->id_ingrediente }}"
+                                                                tabindex="-1"
+                                                                aria-labelledby="editarIngredienteModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-scrollable">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="editarIngredienteModalLabel">
+                                                                                Editar ingrediente</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"
+                                                                                data-bs-toggle="tooltip"
+                                                                                data-bs-placement="top"
+                                                                                title="Cerrar"></button>
+                                                                        </div>
 
-                                                        <!-- Modal de edición -->
-                                                        <div class="modal fade" id="editarIngredienteModal{{$item->id_ingrediente}}"
-                                                            tabindex="-1" aria-labelledby="editarIngredienteModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="editarIngredienteModalLabel">
-                                                                            Editar ingrediente</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal" aria-label="Close"
-                                                                            data-bs-toggle="tooltip"
-                                                                            data-bs-placement="top"
-                                                                            title="Cerrar"></button>
+                                                                        <div class="modal-body">
+                                                                            <form
+                                                                                action="{{ route('ingredientes.update', $item->id_ingrediente) }}"
+                                                                                method="post">
+                                                                                @csrf
+                                                                                @method('put')
+                                                                                <div class="mb-3">
+                                                                                    <label for="editNombre"
+                                                                                        class="col-sm-4 col-form-label">Nombre</label>
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="nombre"
+                                                                                        placeholder="Nombre"
+                                                                                        value="{{ $item->nombre }}">
+                                                                                </div>
+
+                                                                                <div class="mb-3">
+                                                                                    <label for="editCantidad"
+                                                                                        class="form-label">Cantidad</label>
+                                                                                    <input type="number"
+                                                                                        class="form-control"
+                                                                                        name="cantidad"
+                                                                                        placeholder="Cantidad"
+                                                                                        value="{{ $item->cantidad }}">
+                                                                                </div>
+
+                                                                                <div class="mb-3">
+                                                                                    <label for="editFechaVencimiento"
+                                                                                        class="form-label">Fecha
+                                                                                        vencimiento</label>
+                                                                                    <input type="date"
+                                                                                        class="form-control"
+                                                                                        name="fecha_vencimiento"
+                                                                                        placeholder=""
+                                                                                        value="{{ $item->fecha_vencimiento }}">
+                                                                                </div>
+
+                                                                                <div class="mb-3">
+                                                                                    <label for="editProveedor"
+                                                                                        class="form-label">Proveedor</label>
+                                                                                    <input type="text" name="proveedor"
+                                                                                        class="form-control"
+                                                                                        value="{{ $item->nombre_proveedor }}">
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-info text-white"
+                                                                                        style="background-color: #FFC77D; border-color: #FFC77D;">
+                                                                                        <i class="bx bx-save"
+                                                                                            style="color: #F2F2F2;"></i>
+                                                                                        Guardar
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
+                                                                </div>
+                                                            </div>
 
-                                                                    <div class="modal-body">
-                                                                        <form action="{{route('ingredientes.update',$item->id_ingrediente)}}" method="post">
-                                                                            @csrf
-                                                                            @method('put')
-                                                                            <div class="mb-3">
-                                                                                <label for="editNombre"
-                                                                                    class="col-sm-4 col-form-label">Nombre</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    name="nombre" placeholder="Nombre" value="{{$item->nombre}}">
-                                                                            </div>
-
-                                                                            <div class="mb-3">
-                                                                                <label for="editCantidad"
-                                                                                    class="form-label">Cantidad</label>
-                                                                                <input type="number" class="form-control"
-                                                                                    name="cantidad" placeholder="Cantidad" value="{{$item->cantidad}}">
-                                                                            </div>
-                                                                           
-                                                                            <div class="mb-3">
-                                                                                <label for="editFechaVencimiento"
-                                                                                    class="form-label">Fecha
-                                                                                    vencimiento</label>
-                                                                                <input type="date" class="form-control"
-                                                                                    name="fecha_vencimiento"
-                                                                                    placeholder="" value="{{$item->fecha_vencimiento}}">
-                                                                            </div>
-
-                                                                            <div class="mb-3">
-                                                                                <label for="editProveedor"
-                                                                                    class="form-label">Proveedor</label>
-                                                                                <input type="text" name="proveedor" class="form-control" value="{{$item->nombre_proveedor}}">
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="modal-footer">
-                                                                                <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Cerrar</button>
+                                                            {{-- Modal de eliminar --}}
+                                                            <div class="modal fade"
+                                                                id="eliminarIngredienteModal{{ $item->id_ingrediente }}"
+                                                                tabindex="-1"
+                                                                aria-labelledby="eliminarIngredienteModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="eliminarIngredienteModalLabel{{ $item->id_ingrediente }}">
+                                                                                Confirmar
+                                                                                eliminación</h5>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal"
+                                                                                aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            ¿Estás seguro de que deseas eliminar este
+                                                                            ingrediente?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Cancelar</button>
+                                                                            <form
+                                                                                action="{{ route('ingredientes.destroy', $item->id_ingrediente) }}"
+                                                                                method="POST">
+                                                                                @csrf
+                                                                                @method('delete')
                                                                                 <button type="submit"
-                                                                                    class="btn btn-info text-white"
-                                                                                    style="background-color: #FFC77D; border-color: #FFC77D;">
-                                                                                    <i class="bx bx-save"
-                                                                                        style="color: #F2F2F2;"></i>
-                                                                                    Guardar
-                                                                                </button>
-                                                                            </div>
-                                                                        </form>
+                                                                                    class="btn btn-danger">
+                                                                                    Eliminar</button>
+                                                                            </form>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-
-                                                        {{-- Modal de eliminar --}}
-                                                        <div class="modal fade" id="eliminarIngredienteModal{{$item->id_ingrediente}}"
-                                                            tabindex="-1" aria-labelledby="eliminarIngredienteModalLabel"
-                                                            aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"
-                                                                            id="eliminarIngredienteModalLabel{{$item->id_ingrediente}}">
-                                                                            Confirmar
-                                                                            eliminación</h5>
-                                                                        <button type="button" class="btn-close"
-                                                                            data-bs-dismiss="modal"
-                                                                            aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        ¿Estás seguro de que deseas eliminar este
-                                                                        ingrediente?
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Cancelar</button>
-                                                                        <form action="{{route('ingredientes.destroy',$item->id_ingrediente)}}"  method="POST" >
-                                                                            @csrf
-                                                                            @method('delete')
-                                                                            <button type="submit" class="btn btn-danger">
-                                                                                Eliminar</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>

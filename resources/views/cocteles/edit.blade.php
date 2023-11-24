@@ -3,8 +3,10 @@
 @section('gestion_nombre', 'Agregar nuevo cóctel')
 
 @section('contenido')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<h3 class="text-secondary mb-4">Editando el Coctel: {{ $ite->nombre }} </h3>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <h3 class="text-secondary mb-4">Editando el Coctel: {{ $ite->nombre }} </h3>
     <hr>
 
     <div class="row">
@@ -24,7 +26,7 @@
                 <div class="mt-2">
                     <label for="" id="tituloLabel"> Descripción </label>
                     <textarea cols="30" rows="3" type="text" class="form-control" id="inputtitulopag" name="descripcion"
-                        placeholder="Escriba una descripción" >{{ $ite->descripcion }}</textarea>
+                        placeholder="Escriba una descripción">{{ $ite->descripcion }}</textarea>
                 </div>
                 <div class="mt-2">
                     <label for="" id="tituloLabel"> Precio </label>
@@ -34,14 +36,14 @@
                 <div class="mt-2">
                     <label for="" id="tituloLabel"> Disponible </label>
                     <select class="form-select" aria-label="Default select example" name="disponibilidad">
-                        @if ($ite->disponibilidad==1)
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
+                        @if ($ite->disponibilidad == 1)
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
                         @else
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
                         @endif
-                        
+
                     </select>
                 </div>
                 <div class="mt-2">
@@ -55,7 +57,7 @@
                         @endforeach
                     </select>
                 </div>
-                
+
                 <div class="mt-2">
                     <label for="" id="tituloLabel"> Imagen </label>
                     <input class="form-control @error('img') is-invalid @enderror" type="file" name="nueva_img"
@@ -68,7 +70,7 @@
                     @endif
                 </div>
 
-                
+
                 <div class="mt-4">
 
                     <button class="btn btn-primary">Actualizar</button>
@@ -84,7 +86,7 @@
 
                 <div class="mb-3">
 
-                    <form id="formularioCocteles" action="{{route('coctelesIngredientes.store')}}" method="POST">
+                    <form id="formularioCocteles" action="{{ route('coctelesIngredientes.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="row">
@@ -99,13 +101,14 @@
                                                 <input type="hidden" name="id_coctel" value="{{ $ite->id_coctel }}">
 
                                                 <label for="" id="tituloLabel"> Ingredientes </label>
-                                                <select style="width: 260px" class="form-select" aria-label="Default select example"
-                                                    name="id_ingrediente">
+                                                <select style="width: 260px" class="form-select"
+                                                    aria-label="Default select example" name="id_ingrediente">
                                                     <option selected>Seleccione un ingrediente</option>
-                                                     @foreach ($ingredientes as $item)
-                                                     <option value="{{$item->id_ingrediente}}">{{$item->nombre}}</option>
-                                                     @endforeach
-                                                    
+                                                    @foreach ($ingredientes as $item)
+                                                        <option value="{{ $item->id_ingrediente }}">{{ $item->nombre }}
+                                                        </option>
+                                                    @endforeach
+
                                                 </select>
                                             </div>
                                         </div>
@@ -148,7 +151,7 @@
 
                         <thead class="bg-primary">
                             <tr>
-                               
+
                                 <th style="background-color: #25bfab; color: #F2F2F2" class="text-center">Ingrediente</th>
 
                                 <th style="background-color: #25bfab; color: #F2F2F2" class="text-center">Cantidad</th>
@@ -161,7 +164,7 @@
 
                             @foreach ($datos as $i)
                                 <tr>
-                                    
+
                                     <td class="text-center">{{ $i->ingrediente->nombre }}</td>
 
                                     <td class="text-center">{{ $i->cantidad }}</td>
@@ -185,12 +188,12 @@
 
                 </div>
 
-                
+
 
 
             </div>
 
         </div>
     </div>
-    
+
 @endsection
