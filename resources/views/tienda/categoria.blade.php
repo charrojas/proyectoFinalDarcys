@@ -11,7 +11,7 @@
               <div class="col-lg-6 p-lg-0">
                 <!-- Encapsula la imagen dentro de un card para hacerla adaptable -->
                 <div class="card">
-                  <img src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
+                  <img style="height: 373px;" src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
                 </div>
             </div>
               <div class="col-lg-6">

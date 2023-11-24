@@ -8,7 +8,12 @@
       <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body p-0">
         <div class="row align-items-stretch">
-          <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style=" width: 352px;background: url(img/{{$item->img}})" href="img/{{$item->img}}" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-1.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a></div>
+          <div class="col-lg-6 p-lg-0">
+            <!-- Encapsula la imagen dentro de un card para hacerla adaptable -->
+            <div class="card">
+              <img style="height: 373px;" src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
+            </div>
+        </div>
           <div class="col-lg-6">
             <div class="p-4 my-md-4">
               <ul class="list-inline mb-2">
@@ -37,7 +42,12 @@
       <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body p-0">
         <div class="row align-items-stretch">
-          <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style=" width: 352px;background: url(img/{{$item->img}})" href="img/{{$item->img}}" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-1.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a></div>
+          <div class="col-lg-6 p-lg-0">
+            <!-- Encapsula la imagen dentro de un card para hacerla adaptable -->
+            <div class="card">
+              <img style=" height: 373px;" src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
+            </div>
+        </div>
           <div class="col-lg-6">
             <div class="p-4 my-md-4">
               <ul class="list-inline mb-2">
@@ -66,7 +76,12 @@
       <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body p-0">
         <div class="row align-items-stretch">
-          <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style=" width: 352px;background: url(img/{{$item->img}})" href="img/{{$item->img}}" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-1.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a></div>
+          <div class="col-lg-6 p-lg-0">
+            <!-- Encapsula la imagen dentro de un card para hacerla adaptable -->
+            <div class="card">
+              <img style="height: 373px;" src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
+            </div>
+        </div>
           <div class="col-lg-6">
             <div class="p-4 my-md-4">
               <ul class="list-inline mb-2">
@@ -95,7 +110,13 @@
       <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body p-0">
         <div class="row align-items-stretch">
-          <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style=" width: 352px;background: url(img/{{$item->img}})" href="img/{{$item->img}}" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-1.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a></div>
+          <div class="col-lg-6 p-lg-0">
+            <!-- Encapsula la imagen dentro de un card para hacerla adaptable -->
+            <div class="card">
+              <img style="
+              height: 373px;" src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
+            </div>
+        </div>
           <div class="col-lg-6">
             <div class="p-4 my-md-4">
               <ul class="list-inline mb-2">
