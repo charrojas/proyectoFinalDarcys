@@ -31,9 +31,9 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                  
+
                         <div class="embed-responsive embed-responsive-16by9" style="margin-top: 30px;">
-                            <iframe class="embed-responsive-item" 
+                            <iframe class="embed-responsive-item"
                                 src="https://www.youtube.com/embed/l6xu_f8unac?si=u9Rz73JDaJOsRXcR"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -41,8 +41,8 @@
                                 style="width: 80%; max-width: 100%; height: 272px; max-height: 100%"></iframe>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
         </section>

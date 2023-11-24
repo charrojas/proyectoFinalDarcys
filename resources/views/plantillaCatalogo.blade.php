@@ -44,13 +44,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <!-- Link--><a class="nav-link" href="{{route('inicio')}}">Inicio</a>
+                                <!-- Link--><a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <!-- Link--><a class="nav-link" href="">Tienda</a>
                             </li> --}}
                             <li class="nav-item">
-                                <!-- Link--><a class="nav-link" href="{{route('nosotros')}}">Nosotros</a>
+                                <!-- Link--><a class="nav-link" href="{{ route('nosotros') }}">Nosotros</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <!-- Link--><a class="nav-link" href="">Checkout</a>
@@ -58,7 +58,8 @@
 
                         </ul>
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="{{route('planes')}}"><i class="fas fa-concierge-bell"></i> Catering service</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('planes') }}"><i
+                                        class="fas fa-concierge-bell"></i> Catering service</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -195,50 +196,50 @@
 
         <footer class="bg-dark text-white">
             <div class="container py-4">
-              <div class="row py-5">
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <h6 class="text-uppercase mb-3">Atención al cliente</h6>
-                  <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#!">Servicios &amp; Dudas</a></li>
-                    <li><a class="footer-link" href="#!">Reagendar</a></li>
-                    <li><a class="footer-link" href="#!">Cotizaciones</a></li>
-                    <li><a class="footer-link" href="#!">Catering service</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                  <h6 class="text-uppercase mb-3">Desarrolladores</h6>
-                  <ul class="list-unstyled mb-0">
-                             <li><a class="footer-link" href="#!">Douglas Jimenez</a></li>
+                <div class="row py-5">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h6 class="text-uppercase mb-3">Atención al cliente</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a class="footer-link" href="#!">Servicios &amp; Dudas</a></li>
+                            <li><a class="footer-link" href="#!">Reagendar</a></li>
+                            <li><a class="footer-link" href="#!">Cotizaciones</a></li>
+                            <li><a class="footer-link" href="#!">Catering service</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h6 class="text-uppercase mb-3">Desarrolladores</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a class="footer-link" href="#!">Douglas Jimenez</a></li>
                             <li><a class="footer-link" href="#!">Alvaro Martinez</a></li>
                             <li><a class="footer-link" href="#!">Randall Casasola</a></li>
                             <li><a class="footer-link" href="#!">Charlotte Rojas</a></li>
                             <li><a class="footer-link" href="#!">Yendry Villalobos</a></li>
                             <li><a class="footer-link" href="#!">Sebastian Cerdas</a></li>
-                  </ul>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="text-uppercase mb-3">Redes Sociales</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a class="footer-link" href="#!">Twitter</a></li>
+                            <li><a class="footer-link" href="#!">Instagram</a></li>
+                            <li><a class="footer-link" href="#!">Tumblr</a></li>
+                            <li><a class="footer-link" href="#!">Pinterest</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                  <h6 class="text-uppercase mb-3">Redes Sociales</h6>
-                  <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#!">Twitter</a></li>
-                    <li><a class="footer-link" href="#!">Instagram</a></li>
-                    <li><a class="footer-link" href="#!">Tumblr</a></li>
-                    <li><a class="footer-link" href="#!">Pinterest</a></li>
-                  </ul>
+                <div class="border-top pt-4" style="border-color: #1d1d1d !important">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start">
+                            <p class="small text-muted mb-0">&copy; 2023 Todos los derechos reservados.</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            {{-- <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p> --}}
+                            <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="border-top pt-4" style="border-color: #1d1d1d !important">
-                <div class="row">
-                  <div class="col-md-6 text-center text-md-start">
-                    <p class="small text-muted mb-0">&copy; 2023 Todos los derechos reservados.</p>
-                  </div>
-                  <div class="col-md-6 text-center text-md-end">
-                    {{-- <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p> --}}
-                    <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
-                  </div>
-                </div>
-              </div>
             </div>
-          </footer>
+        </footer>
         <!-- JavaScript files-->
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="vendor/glightbox/js/glightbox.min.js"></script>
