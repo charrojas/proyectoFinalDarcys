@@ -1,38 +1,39 @@
 @extends('tienda.plantillaCategoria')
 @section('categoria')
 
-@foreach ($cocteles as $item)
-<div class="modal fade" id="productView{{$item->id_coctel}}" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content overflow-hidden border-0">
-      <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-      <div class="modal-body p-0">
-        <div class="row align-items-stretch">
-          <div class="col-lg-6 p-lg-0" style="background: url(img/{{$item->img}}) center center / cover no-repeat;">
-            <a class="img-fluid w-100 glightbox product-view d-block h-100" href="img/{{$item->img}}" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a>
-            <a class="glightbox d-none" href="img/product-5-alt-1.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a>
-            <a class="glightbox d-none" href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a>
-        </div>
-          <div class="col-lg-6">
-            <div class="p-4 my-md-4">
-              <ul class="list-inline mb-2">
-                <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
-                <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
-                <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
-                <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
-                <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
-              </ul>
-              <h2 class="h4">{{$item->nombre}}</h2>
-              <p class="text-muted">${{$item->precio}}</p>
-              <p class="text-sm mb-4">{{$item->descripcion}}</p>
+    @foreach ($cocteles as $item)
+    <div class="modal fade" id="productView{{$item->id_coctel}}" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content overflow-hidden border-0">
+          <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-body p-0">
+            <div class="row align-items-stretch">
+              <div class="col-lg-6 p-lg-0">
+                <!-- Encapsula la imagen dentro de un card para hacerla adaptable -->
+                <div class="card">
+                  <img src="img/{{$item->img}}" class="card-img-top img-fluid" alt="{{$item->nombre}}">
+                </div>
+            </div>
+              <div class="col-lg-6">
+                <div class="p-4 my-md-4">
+                  <ul class="list-inline mb-2">
+                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
+                    <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
+                  </ul>
+                  <h2 class="h4">{{$item->nombre}}</h2>
+                  <p class="text-muted">${{$item->precio}}</p>
+                  <p class="text-sm mb-4">{{$item->descripcion}}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-@endforeach
+    @endforeach
 
      <div class="row">
                   @foreach ($cocteles as $item)
