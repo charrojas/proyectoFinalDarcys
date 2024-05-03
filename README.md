@@ -67,5 +67,5 @@ url site: [https://proyectofinal.ucr-ays.net/](https://darcys.ucr-ays.net/)
 
 
 
-url site login: [https://proyectofinal.ucr-ays.net/](https://darcys.ucr-ays.net/)](https://darcys.ucr-ays.net/login)
+url site login: (https://darcys.ucr-ays.net/login)
 
